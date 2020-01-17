@@ -94,8 +94,8 @@ req = {
     #     "https://www.gruporeditos.com/prensa/noticias/"
     # ],
     "files": [
-        {"fileName": "structured.docx",
-         "FileUri": "https://github.com/FerneyCordoba/EPM-CurzoAzure-QnAMaker/raw/develop/structured.docx"
+        {"fileName": "Texto%20OKI%20estructured.docx",
+         "FileUri": "https://github.com/FerneyCordoba/EPM-CurzoAzure-QnAMaker/raw/develop/Texto%20OKI%20estructured.docx"
          }
     ]
 }
