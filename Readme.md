@@ -30,7 +30,12 @@ Ejemplo de url
 
 Ejemplo de files
 
-        "files": []
+    "files": [
+            {"fileName": "Preguntas%20Okibot%202020.docx",
+            "FileUri": "https://github.com/FerneyCordoba/EPM-CurzoAzure-QnAMaker/raw/develop/Preguntas%20Okibot%202020.docx"
+            }
+        ]
+
 
 # Update
 
@@ -61,7 +66,6 @@ al publicar, se reponde con un json.
         "result": "Success."
     }
 
-
 podemos hacer un Postman, de la siguiente manera:
 
 Hacemos Post a:
@@ -78,4 +82,3 @@ y en Body enviamos un raw en formato JSON así:
     {
         "question":"How do I programmatically update my Knowledge Base?"
         }
-
