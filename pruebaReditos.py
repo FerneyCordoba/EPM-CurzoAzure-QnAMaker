@@ -95,7 +95,7 @@ req = {
     # ],
     "files": [
         {"fileName": "structured.docx",
-         "FileUri": "https://github.com/Azure-Samples/cognitive-services-sample-data-files/raw/master/qna-maker/data-source-formats/structured.docx"
+         "FileUri": "https://github.com/FerneyCordoba/EPM-CurzoAzure-QnAMaker/raw/develop/structured.docx"
          }
     ]
 }
