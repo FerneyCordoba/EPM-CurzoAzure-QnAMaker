@@ -13,6 +13,7 @@ load_dotenv()
 # *** Update or verify the following values. ***
 # **********************************************
 
+
 # Replace this with a valid subscription key.
 subscriptionKey = os.getenv("KEY")  # YOUR SUBSCRIPTION KEY HERE'
 
@@ -87,48 +88,58 @@ Dictionary that holds the knowledge base.
 The data source includes a QnA pair with metadata, the URL for the
 QnA Maker FAQ article, and the URL for the Azure Bot Service FAQ article.
 '''
-req = {
-    "name": "QnA Reditos Estructurada",
 
-    # "urls": [
-    #     "https://www.gruporeditos.com/prensa/noticias/"
-    # ],
-    "files": [
-        {"fileName": "Preguntas%20Okibot%202020.docx",
-         "FileUri": "https://github.com/FerneyCordoba/EPM-CurzoAzure-QnAMaker/raw/develop/Preguntas%20Okibot%202020.docx"
-         }
-    ]
-}
 
-# Builds the path URL.
-path = service + method
-# Convert the request to a string.
-content = json.dumps(req)
-# Retrieve the operation ID to check status, and JSON result
-operation, result = create_kb(path, content)
-# Print request response in JSON with presentable formatting
-print(pretty_print(result))
+def make_knowledge(knowledge_name, , file_name,url):
 
-'''
-Iteratively gets the operation state, creating the knowledge base.
-Once state is no longer "Running" or "NotStarted", the loop ends.
-'''
-done = False
-while False == done:
-    path = service + operation
-# Gets the status of the operation.
-    wait, status = check_status(path)
-    # Print status checks in JSON with presentable formatting
-    print(pretty_print(status))
+    req = {
+        "name": knowledge_name,
+        "files": [
+            {"fileName": file_name,
+             "FileUri": url
+             }
+        ]
+        # "name": "QnA Reditos Estructurada",
 
-    # Convert the JSON response into an object and get the value of the operationState field.
-    state = json.loads(status)['operationState']
+        # # "urls": [
+        # #     "https://www.gruporeditos.com/prensa/noticias/"
+        # # ],
+        # "files": [
+        #     {"fileName": "Preguntas%20Okibot%202020.docx",
+        #      "FileUri": "https://github.com/FerneyCordoba/EPM-CurzoAzure-QnAMaker/raw/develop/Preguntas%20Okibot%202020.docx"
+        #      }
+        # ]
+    }
 
-    # If the operation isn't finished, wait and query again.
-    if state == 'Running' or state == 'NotStarted':
-        print('Waiting ' + wait + ' seconds...')
-        time.sleep(int(wait))
-    else:
-        done = True  # request has been processed, if successful, knowledge base is created
+    # Builds the path URL.
+    path = service + method
+    # Convert the request to a string.
+    content = json.dumps(req)
+    # Retrieve the operation ID to check status, and JSON result
+    operation, result = create_kb(path, content)
+    # Print request response in JSON with presentable formatting
+    print(pretty_print(result))
 
-    # ver los resultados en https://www.qnamaker.ai/Home/MyServices
+    '''
+    Iteratively gets the operation state, creating the knowledge base.
+    Once state is no longer "Running" or "NotStarted", the loop ends.
+    '''
+    done = False
+    while False == done:
+        path = service + operation
+    # Gets the status of the operation.
+        wait, status = check_status(path)
+        # Print status checks in JSON with presentable formatting
+        print(pretty_print(status))
+
+        # Convert the JSON response into an object and get the value of the operationState field.
+        state = json.loads(status)['operationState']
+
+        # If the operation isn't finished, wait and query again.
+        if state == 'Running' or state == 'NotStarted':
+            print('Waiting ' + wait + ' seconds...')
+            time.sleep(int(wait))
+        else:
+            done = True  # request has been processed, if successful, knowledge base is created
+
+        # ver los resultados en https://www.qnamaker.ai/Home/MyServices
