@@ -88,14 +88,14 @@ The data source includes a QnA pair with metadata, the URL for the
 QnA Maker FAQ article, and the URL for the Azure Bot Service FAQ article.
 '''
 req = {
-    "name": "QnA Reditos",
+    "name": "QnA Reditos Estructurada",
 
     # "urls": [
     #     "https://www.gruporeditos.com/prensa/noticias/"
     # ],
     "files": [
-        {"fileName": "Texto%20OKI%20estructured.docx",
-         "FileUri": "https://github.com/FerneyCordoba/EPM-CurzoAzure-QnAMaker/raw/develop/Texto%20OKI%20estructured.docx"
+        {"fileName": "Preguntas%20Okibot%202020.docx",
+         "FileUri": "https://github.com/FerneyCordoba/EPM-CurzoAzure-QnAMaker/raw/develop/Preguntas%20Okibot%202020.docx"
          }
     ]
 }
